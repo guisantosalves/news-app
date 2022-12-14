@@ -1,9 +1,16 @@
 import * as React from 'react'
+import { categories } from '../constants'
 
-const HomePage = () => {
+const HomePage = async () => {
+    
+    /*
+        fetching news
+    */
+    //const news: NewsResponse = await fetchNews(categories.join(','))
+
     return (
         <div>
-            <h1>HomePage</h1>
+            {/* list of all news */}
         </div>
     )
 }
