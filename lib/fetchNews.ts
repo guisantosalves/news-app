@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import { sortNewsByImage } from "./sortNewsByImage";
 
 export const fetchNews = async (
     category?: Category | string,
@@ -41,6 +42,7 @@ export const fetchNews = async (
         total
       }
     }
+}
 `;
 
     /*
@@ -49,7 +51,7 @@ export const fetchNews = async (
     const res = await fetch(`https://niquero.stepzen.net/api/interested-snail/__graphql`, {
         method: 'POST',
         cache: isDynamic ? "no-cache" : "default",
-        next: isDynamic ? {revalidate: 0} : {revalidate: 20},
+        next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
         headers: {
             "Content-Type": "application/json",
             Authorization: `APIKey ${process.env.STEPZEN_API_KEY}`
@@ -65,9 +67,13 @@ export const fetchNews = async (
     })
 
     console.log("Loading new data from api for category", category, keyword)
+    const newResponse = await res.json();
+
     // sort function by images vs not images present
+    const filteredNews = sortNewsByImage(newResponse.data.myQuery)
 
     // return
+    return filteredNews;
 }
 
 //stepzen import curl http://api.mediastack.com/v1/news?access_key=b64d6c19045265039705e120adb96737&categories=business,sports
