@@ -2,6 +2,10 @@ import '../styles/globals.css'
 
 // components
 import Header from './Header'
+import Providers from './Providers'
+
+// min-width -> apartir de
+// max-width -> até algo
 
 export default function RootLayout({
   children,
@@ -10,14 +14,15 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head />
-      <body className="bg-gray-10 transition-all dark:bg-zinc-900
+      <Providers>
+        <body className="bg-gray-100 dark:bg-zinc-900 transition-all
       duration-700">
-        <Header />
-        <div className='max-w-6xl mx-auto'>
-          {children}
-        </div>
-      </body>
+          <Header />
+          <div className='max-w-6xl mx-auto'>
+            {children}
+          </div>
+        </body>
+      </Providers>
     </html>
   )
 }

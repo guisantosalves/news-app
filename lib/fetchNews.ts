@@ -6,7 +6,7 @@ export const fetchNews = async (
     keyword?: string,
     isDynamic?: boolean,
 ) => {
-
+    // the items with $ are get in body of the request
     /*
         generate at stepzen
     */

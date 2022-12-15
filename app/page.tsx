@@ -11,7 +11,6 @@ const HomePage = async () => {
         fetching news
     */
     const news: NewsResponse = await fetchNews(categories.join(","))
-    console.log(categories.join(","))
 
     return (
         <div>
