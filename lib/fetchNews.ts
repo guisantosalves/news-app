@@ -66,7 +66,6 @@ export const fetchNews = async (
         })
     })
 
-    console.log("Loading new data from api for category", category, keyword)
     const newResponse = await res.json();
 
     // sort function by images vs not images present

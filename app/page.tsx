@@ -12,6 +12,7 @@ const HomePage = async () => {
     */
     const news: NewsResponse = await fetchNews(categories.join(","))
 
+    await new Promise((resolve) => setTimeout(resolve, 3000))
     return (
         <div>
             {/* list of all news */}
